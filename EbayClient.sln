@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EbayClient", "eBay\EbayClient.csproj", "{93C7B765-B214-4B99-8A0C-8BEB885095AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EbayClient", "EbayClient\EbayClient.csproj", "{93C7B765-B214-4B99-8A0C-8BEB885095AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
