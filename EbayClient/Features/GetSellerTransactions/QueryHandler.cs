@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace EbayClient.Features.GetSellerTransactions
 {
-    public class QueryHandler : IQueryHandler<Query, IQuery<GetSellerTransactionsResponse>>
+    public class QueryHandler : IQueryHandler<Query, GetSellerTransactionsResponse>
     {
         public async Task<GetSellerTransactionsResponse> GetSellerTransactions(Query query)
         {
