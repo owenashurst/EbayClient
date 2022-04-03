@@ -1,12 +1,10 @@
-﻿using EbayClient.Exceptions;
-using EbayClient.Features.GetSellerTransactions.DTOs;
+﻿using EbayClient.Features.GetSellerTransactions.DTOs;
 using EbayClient.Features.GetSellerTransactions.Models;
-using System.Text.Json;
 using System.Xml.Serialization;
 
 namespace EbayClient.Features.GetSellerTransactions
 {
-    public class QueryHandler : IQueryHandler
+    public class QueryHandler : IQueryHandler<Query, IQuery<GetSellerTransactionsResponse>>
     {
         public async Task<GetSellerTransactionsResponse> GetSellerTransactions(Query query)
         {
