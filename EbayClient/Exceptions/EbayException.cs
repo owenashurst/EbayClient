@@ -1,4 +1,6 @@
-﻿namespace EbayClient.Exceptions
+﻿using System;
+
+namespace EbayClient.Exceptions
 {
     public class EbayException : Exception
     {

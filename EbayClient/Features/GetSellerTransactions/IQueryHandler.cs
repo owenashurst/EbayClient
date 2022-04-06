@@ -1,5 +1,6 @@
 ﻿using EbayClient.Features.GetSellerTransactions.DTOs;
 using EbayClient.Features.GetSellerTransactions.Models;
+using System.Threading.Tasks;
 
 namespace EbayClient.Features.GetSellerTransactions
 {

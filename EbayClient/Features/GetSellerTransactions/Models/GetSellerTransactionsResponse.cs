@@ -1,4 +1,6 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace EbayClient.Features.GetSellerTransactions.Models
 {
