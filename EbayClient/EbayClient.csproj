@@ -7,6 +7,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RepositoryUrl>https://github.com/owenashurst/EbayClient</RepositoryUrl> 
+    <RepositoryType>git</RepositoryType> 
     <Authors>Owen Ashurst</Authors>
   </PropertyGroup>
 
