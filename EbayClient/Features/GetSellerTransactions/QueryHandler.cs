@@ -10,19 +10,26 @@ namespace EbayClient.Features.GetSellerTransactions
 {
     public class QueryHandler : IQueryHandler<Query, GetSellerTransactionsResponse>
     {
+        private readonly EbayCredentials _ebayCredentials;
+
+        public QueryHandler(EbayCredentials ebayCredentials)
+        {
+            _ebayCredentials = ebayCredentials ?? throw new ArgumentNullException(nameof(ebayCredentials));
+        }
+
         public async Task<GetSellerTransactionsResponse> GetSellerTransactions(Query query)
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri(query.ApiUrl);
+                httpClient.BaseAddress = new Uri(_ebayCredentials.ApiUrl);
 
                 httpClient.DefaultRequestHeaders.Add("X-EBAY-API-COMPATIBILITY-LEVEL", "1147");
-                httpClient.DefaultRequestHeaders.Add("X-EBAY-API-SITEID", query.SiteId.ToString());
+                httpClient.DefaultRequestHeaders.Add("X-EBAY-API-SITEID", _ebayCredentials.SiteId.ToString());
                 httpClient.DefaultRequestHeaders.Add("X-EBAY-API-CALL-NAME", "GetSellerTransactions");
 
                 query.GetSellerTransactionsRequest.RequesterCredentials = new RequesterCredentials
                 {
-                    EbayAuthToken = query.EbayAuthToken,
+                    EbayAuthToken = _ebayCredentials.AuthToken,
                 };
 
                 var xmlSerialized = string.Empty;
