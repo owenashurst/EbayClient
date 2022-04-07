@@ -5,7 +5,7 @@ This is an unofficial SDK to help people target more modern versions of .NET whi
 
 This SDK allows for cross platform applications to be written such as those that can be deployed to the cloud for SaaS.
 
-Contributations are welcome.
+Contributions are welcome.
 
 ## Coding Pattern
 For this project, each endpoint lives under a "feature". A feature is created following the [CQS (Command Query Seperation) pattern](https://thecodereaper.com/2020/05/23/command-query-separation-cqs/).
