@@ -73,7 +73,7 @@ namespace EbayClient.Features.GetSellerTransactions.Models
         [XmlElement(ElementName = "ShippingServiceSelected")]
         public ShippingServiceSelected ShippingServiceSelected { get; set; }
 
-        public DateTime PaidTime { get; set; }
+        public DateTime? PaidTime { get; set; }
 
         public DateTime? ShippedTime { get; set; }
 
