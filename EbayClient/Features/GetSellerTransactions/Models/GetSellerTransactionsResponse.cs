@@ -75,7 +75,7 @@ namespace EbayClient.Features.GetSellerTransactions.Models
 
         public DateTime PaidTime { get; set; }
 
-        public DateTime ShippedTime { get; set; }
+        public DateTime? ShippedTime { get; set; }
 
         [XmlElement(ElementName = "ContainingOrder")]
         public ContainingOrder ContainingOrder { get; set; }
