@@ -10,6 +10,9 @@
     <RepositoryUrl>https://github.com/owenashurst/EbayClient</RepositoryUrl> 
     <RepositoryType>git</RepositoryType> 
     <Authors>Owen Ashurst</Authors>
+	<Description>
+      Unofficial Ebay Client that supports .NET Standard and .NET 6
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
