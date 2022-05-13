@@ -200,16 +200,106 @@ namespace EbayClient.Features.GetSellerTransactions.Models
         public ShipmentTrackingDetails ShipmentTrackingDetails { get; set; }
     }
 
+    public enum CheckoutStatusCodeType
+    {
+        [XmlEnum("BuyerRequestsTotal")]
+        BuyerRequestsTotal,
+
+        [XmlEnum("CheckoutComplete")]
+        CheckoutComplete,
+
+        [XmlEnum("CheckoutIncomplete")]
+        CheckoutIncomplete,
+
+        [XmlEnum("CustomCode")]
+        CustomCode,
+
+        [XmlEnum("SellerResponded")]
+        SellerResponded
+    }
+
+    public enum BuyerPaymentMethodCodeType
+    {
+        [XmlEnum("AmEx")]
+        AmEx,
+
+        [XmlEnum("CashOnPickup")]
+        CashOnPickup,
+
+        [XmlEnum("CCAccepted")]
+        CCAccepted,
+
+        [XmlEnum("COD")]
+        COD,
+
+        [XmlEnum("CODPrePayDelivery")]
+        CODPrePayDelivery,
+
+        [XmlEnum("CreditCard")]
+        CreditCard,
+
+        [XmlEnum("CustomCode")]
+        CustomCode,
+
+        [XmlEnum("Diners")]
+        Diners,
+
+        [XmlEnum("Discover")]
+        Discover,
+
+        [XmlEnum("Escrow")]
+        Escrow,
+
+        [XmlEnum("MOCC")]
+        MOCC,
+
+        [XmlEnum("MoneyXferAccepted")]
+        MoneyXferAccepted,
+
+        [XmlEnum("MoneyXferAcceptedInCheckout")]
+        MoneyXferAcceptedInCheckout,
+
+        [XmlEnum("None")]
+        None,
+
+        [XmlEnum("Other")]
+        Other,
+
+        [XmlEnum("OtherOnlinePayments")]
+        OtherOnlinePayments,
+
+        [XmlEnum("PaymentSeeDescription")]
+        PaymentSeeDescription,
+
+        [XmlEnum("PayPal")]
+        PayPal,
+
+        [XmlEnum("PayUponInvoice")]
+        PayUponInvoice,
+
+        [XmlEnum("PersonalCheck")]
+        PersonalCheck,
+
+        [XmlEnum("PostalTransfer")]
+        PostalTransfer,
+
+        [XmlEnum("PrePayDelivery")]
+        PrePayDelivery,
+
+        [XmlEnum("VisaMC")]
+        VisaMC
+    }
+
     public class Status
     {
         [XmlElement(ElementName = "eBayPaymentStatus")]
         public string EbayPaymentStatus { get; set; }
 
-        public string CheckoutStatus { get; set; }
+        public CheckoutStatusCodeType CheckoutStatus { get; set; }
 
         public DateTime LastTimeModified { get; set; }
 
-        public string PaymentMethodUsed { get; set; }
+        public BuyerPaymentMethodCodeType PaymentMethodUsed { get; set; }
 
         public string CompleteStatus { get; set; }
 
