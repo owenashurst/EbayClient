@@ -322,7 +322,7 @@ namespace EbayClient.Features.GetSellerTransactions.Models
 
         public string Currency { get; set; }
 
-        public double ItemID { get; set; }
+        public string ItemID { get; set; }
 
         public string ListingType { get; set; }
 
