@@ -19,6 +19,9 @@ jobs:
       SOLUTION: 'EbayClient.sln'
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
     - uses: actions/checkout@v2
@@ -45,6 +48,13 @@ jobs:
     - name: Run tests
       run: dotnet test /p:Configuration=$BUILD_CONFIG --no-restore --no-build --verbosity normal
 
+    - name: NuGet login (OIDC -> temp API key)
+      if: startsWith(github.ref, 'refs/heads/release')
+      uses: NuGet/login@v1
+      id: nuget_login
+      with:
+        user: ${{ secrets.NUGET_USER }}
+
     - name: Publish
       if: startsWith(github.ref, 'refs/heads/release')
-      run: find . -name '*.nupkg' -exec dotnet nuget push {} --source 'https://api.nuget.org/v3/index.json' --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate \;
+      run: find . -name '*.nupkg' -exec dotnet nuget push {} --source 'https://api.nuget.org/v3/index.json' --api-key ${{ steps.nuget_login.outputs.NUGET_API_KEY }} --skip-duplicate \;
