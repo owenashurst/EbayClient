@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 namespace EbayClient.Features.GetSellerTransactions.Models
@@ -396,11 +397,41 @@ namespace EbayClient.Features.GetSellerTransactions.Models
 
     public class ShippingAddress
     {
+        // eBay occasionally stores an internal reference token (observed pattern: "ebay" followed by
+        // a run of lowercase alphanumeric characters, e.g. "ebaymtclqda") somewhere in Street2 instead
+        // of, or alongside, a real address line (e.g. "Rodmill ebayrqpn66a"). This has been confirmed
+        // present in Seller Hub itself (not introduced by this library or by the eBay International
+        // Shipping program), so it reflects bad data on eBay's side rather than something the API lets
+        // us opt out of.
+        private static readonly Regex EbayTokenPattern =
+            new Regex(@"\bebay[a-z0-9]{4,20}\b", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+        private static readonly Regex ExtraWhitespacePattern =
+            new Regex(@"\s{2,}", RegexOptions.Compiled);
+
+        private string _street2;
+
         public string Name { get; set; }
 
         public string Street1 { get; set; }
 
-        public string Street2 { get; set; }
+        public string Street2
+        {
+            get => _street2;
+            set => _street2 = SanitizeStreet2(value);
+        }
+
+        private static string SanitizeStreet2(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            var cleaned = ExtraWhitespacePattern.Replace(EbayTokenPattern.Replace(value, string.Empty), " ").Trim();
+
+            return string.IsNullOrEmpty(cleaned) ? null : cleaned;
+        }
 
         public string CityName { get; set; }
 
